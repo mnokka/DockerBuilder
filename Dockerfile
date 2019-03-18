@@ -1,9 +1,7 @@
-FROM ubuntu
-
-RUN apt-get update && apt-get install -y build-essential gcc wget git
+FROM gcc:7.3.0
 RUN git clone https://github.com/mnokka/HelloWorld
 RUN ls
-
-RUN gcc HelloWorld/src/CHelloWorld.c
-RUN ls HelloWorld/src
-RUN HelloWorld/src/a.out
+WORKDIR HelloWorld/src
+RUN gcc -o hello CHelloWorld.c
+RUN ls 
+CMD ["./hello"]
